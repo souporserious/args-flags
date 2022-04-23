@@ -1,6 +1,6 @@
 {
   "name": "args-flags",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "author": "Travis Arnold",
   "description": "A simple command line argument parser.",
   "license": "MIT",
@@ -8,5 +8,6 @@
     "type": "git",
     "url": "https://github.com/souporserious/args-flags"
   },
-  "main": "index.js"
+  "main": "index.js",
+  "types": "index.d.ts"
 }
