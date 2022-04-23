@@ -1,6 +1,6 @@
 {
   "name": "args-flags",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "Travis Arnold",
   "description": "A simple command line argument parser.",
   "license": "MIT",

@@ -1,18 +1,37 @@
 const args = []
-const flags = Object.fromEntries(
-  process.argv
-    .slice(2)
-    .filter((arg) => {
-      const isFlag = arg.includes('=')
-      if (!isFlag) {
-        args.push(arg)
-      }
-      return isFlag
-    })
-    .map((arg) => {
-      const [key, value] = arg.split('=')
-      return [key.slice(2), value]
-    })
-)
+const flags = {}
+
+process.argv.slice(2).forEach((arg) => {
+  if (!arg.includes('--')) {
+    args.push(arg)
+    return
+  }
+
+  let [key, value] = arg.split('=')
+  const isNumber = !isNaN(value)
+  const isFloat = value.includes('.')
+
+  if (isNumber) {
+    if (isFloat) {
+      value = parseFloat(value)
+    } else {
+      value = Number(value)
+    }
+  }
+
+  if (value === 'true') {
+    value = true
+  }
+
+  if (value === 'false') {
+    value = false
+  }
+
+  if (value === undefined) {
+    value = true
+  }
+
+  flags[key.slice(2)] = value
+})
 
 module.exports = { args, flags }
